@@ -110,15 +110,30 @@ public class MotorvognRepository {
         }
     }
 
-    public boolean login(Kunde kunde) {
+    public boolean[] login(Kunde kunde) {
         String SQL = "SELECT * FROM Kunde WHERE brukernavn = ?";
 
+        boolean[] list = {false, false};
         Kunde dbKunde = db.queryForObject(SQL, new BeanPropertyRowMapper<>(Kunde.class), kunde.getBrukernavn());
         if (dbKunde != null) {
             if (dbKunde.getPassord().equals(kunde.getPassord())) {
-                return true;
+                list[0] = true;
+                if (dbKunde.getRettighet().equals("admin")) {
+                    list[1] = true;
+                }
             }
         }
-        return false;
+        return list;
+    }
+
+    public boolean registrerBruker(Kunde kunde) {
+        String SQL = "INSERT INTO Kunde(brukernavn, passord, rettighet) VALUES(?,?,?)";
+        try {
+            db.update(SQL, kunde.getBrukernavn(), kunde.getPassord(), kunde.getRettighet());
+            return true;
+        } catch (Exception e) {
+            logger.error("Kunne ikke lage kunde");
+            return false;
+        }
     }
 }

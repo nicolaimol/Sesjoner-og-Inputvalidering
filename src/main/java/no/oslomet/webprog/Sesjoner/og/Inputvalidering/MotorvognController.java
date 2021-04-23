@@ -37,19 +37,39 @@ public class MotorvognController {
         return httpSession.getAttribute("login") != null;
     }
 
+    @PostMapping("/registrerBruker")
+    public void registerBruker(Kunde kunde, HttpServletResponse res) throws IOException {
+        if (validateAdmin()) {
+            if (!rep.registrerBruker(kunde)) {
+                res.sendError(500, "Feilet lage kunde");
+            }
+        }
+        else {
+            res.sendError(403, "Du må være admin for å lage bruker");
+        }
+    }
+
     @PostMapping("/login")
     public void login(Kunde kunde, HttpServletResponse res) throws IOException {
-        boolean ok = rep.login(kunde);
-        if (!ok) {
+        boolean[] ok = rep.login(kunde);
+        if (!ok[0]) {
             res.sendError(500, "Login feilet");
         } else {
             httpSession.setAttribute("login", true);
+            if (ok[1]) {
+                httpSession.setAttribute("admin", true);
+            }
         }
     }
 
     @GetMapping("/validate")
     public boolean validateUser() {
         return httpSession.getAttribute("login") != null;
+    }
+
+    @GetMapping("/validateAdmin")
+    public boolean validateAdmin() {
+        return httpSession.getAttribute("login") != null && httpSession.getAttribute("admin") != null;
     }
 
     @PostMapping("/lagre")

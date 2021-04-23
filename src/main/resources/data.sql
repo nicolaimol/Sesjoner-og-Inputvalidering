@@ -4,4 +4,4 @@ INSERT INTO Biler(merke, type) VALUES('Volkswagen', 'Beetle');
 INSERT INTO Biler(merke, type) VALUES('Suzuki', 'Swift');
 INSERT INTO Biler(merke, type) VALUES('Suzuki', 'Cultus');
 INSERT INTO Biler(merke, type) VALUES('Suzuki', 'Alto');
-INSERT INTO Kunde(brukernavn, passord) VALUES ('admin', 'admin');
+INSERT INTO Kunde(brukernavn, passord, rettighet) VALUES ('admin', 'admin', 'admin');

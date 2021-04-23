@@ -17,5 +17,6 @@ CREATE TABLE Motorvogn (
 
 CREATE TABLE Kunde(
     brukernavn varchar(20) not null primary key,
-    passord varchar(20) not null
+    passord varchar(20) not null,
+    rettighet varchar(20) not null
 );

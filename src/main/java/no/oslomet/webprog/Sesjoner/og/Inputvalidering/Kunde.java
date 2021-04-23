@@ -4,10 +4,13 @@ public class Kunde {
 
     private String brukernavn;
     private String passord;
+    private String rettighet;
 
-    public Kunde(String brukernavn, String passord) {
+    public Kunde(String brukernavn, String passord, String rettighet) {
         this.brukernavn = brukernavn;
         this.passord = passord;
+        this.rettighet = rettighet;
+
     }
 
     public Kunde() {
@@ -27,5 +30,13 @@ public class Kunde {
 
     public void setPassord(String passord) {
         this.passord = passord;
+    }
+
+    public String getRettighet() {
+        return rettighet;
+    }
+
+    public void setRettighet(String rettighet) {
+        this.rettighet = rettighet;
     }
 }
