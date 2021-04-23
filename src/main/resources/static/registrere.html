@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ukeoppgaver 11</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Motorvognregister</h1>
+            <form class="form">
+                <input type="hidden" id="id">
+                <div class="form-group">
+                    <label for="personnr">Personnummer</label>
+                    <input class="form-control" id="personnr" type="text">
+                    <div id="personnummer-error" style="color: red; margin-bottom: 1rem;"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="navn">Navn</label>
+                    <input class="form-control" id="navn" type="text">
+                    <div id="navn-error" style="color: red; margin-bottom: 1rem;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="adresse">Addresse</label>
+                    <input class="form-control" id="adresse" type="text">
+                    <div id="adresse-error" style="color: red; margin-bottom: 1rem;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="kjennetegn">Kjennetegn</label>
+                    <input class="form-control" id="kjennetegn" type="text">
+                    <div id="kjennetegn-error" style="color: red; margin-bottom: 1rem;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="merke-div">Merke</label>
+                    <div id="merke-div" class="dropdown">
+
+                    </div>
+                    <div id="merke-error" style="color: red; margin-bottom: 1rem;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="type-div">Type</label>
+                    <div id="type-div" class="dropdown">
+
+                    </div>
+                    <div id="type-error" style="color: red; margin-bottom: 1rem;"></div>
+                </div>
+            </form>
+            <p id="error"></p>
+            <button class="btn btn-primary" onclick="regMotorvogn()">Registrer</button>
+        </div>
+    </div>
+</div>
+<script src="validering.js" ></script>
+<script src="registrere.js" ></script>
+</body>
